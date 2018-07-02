@@ -76,6 +76,21 @@ void delete_last()
         delete temp;
     }
 }
+void rev_list()
+{
+    struct node *prev, *cur, *next;
+    prev=NULL;
+    next=NULL;
+    cur=root;
+    while(cur!=NULL)
+    {
+        next=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=next;
+    }
+    root=prev;
+}
 void display()
 {
     struct node *temp;
@@ -92,7 +107,7 @@ int main()
     int ch;
     while(1)
     {
-    cout<<"\n1.Insert_F 2.Insert_L 3.Delete_F 4.Delete_L  5.Disp  6.exit  \n";
+    cout<<"\n1.Insert_F 2.Insert_L 3.Delete_F 4.Delete_L  5.Disp  6.reverse  \n";
     cin>>ch;
     switch(ch)
     {
@@ -101,6 +116,7 @@ int main()
         case 3:delete_first();break;
         case 4:delete_last();break;
         case 5:display();break;
+        case 6:rev_list();break;
         default:exit(0);
     }
     }
